@@ -10,7 +10,7 @@
 						</button>
 					</span>
 					<input type="text" class="form-control" v-model="task" placeholder="Write a new task...">
-				</div><!-- /input-group -->
+				</div>
 			</div>
 		</div>
 	</form>
@@ -27,12 +27,24 @@
 
 		methods: {
 			eventMethod(task){
-				console.log('Adding a new task called: ' + task)
-                // this.$dispatch('mensagemEcho', this.task)
-                this.$root.$broadcast('new-task', this.task)
-                this.task = '';
-                
-            },
+				console.log('Adding a new task called: ' + task);
+				this.$root.$broadcast('new-task', this.task);
+				this.task = '';
+
+			},
+		},
+
+        // created() {
+        // 	console.log('created');
+        // },
+
+        ready() {
+        	console.log('ready');
+        	
+        	
+        	console.log('ready finish');
         }
+
+
     };
 </script>
